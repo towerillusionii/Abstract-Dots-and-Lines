@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://dn0emb1g8mp5x"]
+
+[ext_resource type="Script" uid="uid://b4dcmddtrqx1c" path="res://src/display_elements/falling_dots_and_lines.gd" id="1_73ogb"]
+[ext_resource type="Material" uid="uid://wf7agdw87p61" path="res://src/materials/player_01_material.tres" id="1_bhfi7"]
+[ext_resource type="Material" uid="uid://bxh3bpk7dihqx" path="res://src/materials/player_02_material.tres" id="2_01ih7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j0bha"]
+material = ExtResource("1_bhfi7")
+radius = 0.1
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_01ih7"]
+material = ExtResource("1_bhfi7")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_73ogb"]
+material = ExtResource("2_01ih7")
+radius = 0.1
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ldbkt"]
+material = ExtResource("2_01ih7")
+radius = 0.2
+height = 0.4
+
+[node name="Falling Dots and Lines" type="Node3D" unique_id=930799523]
+script = ExtResource("1_73ogb")
+
+[node name="Purple Lines" type="CPUParticles3D" parent="." unique_id=1335810072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+emitting = false
+amount = 75
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.56
+randomness = 0.55
+mesh = SubResource("CapsuleMesh_j0bha")
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 1)
+spread = 77.54
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = -65.08
+angular_velocity_max = 69.15
+angle_min = -93.6
+angle_max = 105.8
+scale_amount_min = 0.4
+scale_amount_max = 1.2
+
+[node name="Purple Dots" type="CPUParticles3D" parent="." unique_id=729507888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+emitting = false
+amount = 75
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.56
+randomness = 0.55
+mesh = SubResource("SphereMesh_01ih7")
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 107.03
+flatness = 0.08
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angular_velocity_min = -65.08
+angular_velocity_max = 69.15
+angle_min = -93.6
+angle_max = 105.8
+scale_amount_min = 0.4
+scale_amount_max = 1.2
+
+[node name="Yellow Lines" type="CPUParticles3D" parent="." unique_id=463128028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+emitting = false
+amount = 75
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.56
+randomness = 0.55
+mesh = SubResource("CapsuleMesh_73ogb")
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 1)
+spread = 77.54
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+angular_velocity_min = -65.08
+angular_velocity_max = 69.15
+angle_min = -100.0
+angle_max = 50.0
+scale_amount_min = 0.4
+scale_amount_max = 1.2
+
+[node name="Yellow Dots" type="CPUParticles3D" parent="." unique_id=1495024693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+emitting = false
+amount = 75
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.56
+randomness = 0.55
+mesh = SubResource("SphereMesh_ldbkt")
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 1)
+spread = 77.54
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = -65.08
+angular_velocity_max = 69.15
+angle_min = -93.6
+angle_max = 105.8
+scale_amount_min = 0.4
+scale_amount_max = 1.2
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1374605275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1442887892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -1)
+light_energy = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=744742299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+light_color = Color(0.9159278, 0.83466446, 0.9426376, 1)
+light_energy = 2.0

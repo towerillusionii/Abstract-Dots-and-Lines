@@ -1,0 +1,51 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Abstract Dots and Lines"
+run/main_scene="uid://cqwej56st22n7"
+config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/use_filter=false
+boot_splash/image="uid://bqlp2jro2xtns"
+config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
+
+[autoload]
+
+EventBus="*uid://bjgs64r5owi3e"
+GameState="*uid://btcmivlasm2x5"
+Transition="*uid://bwa0aqh1ne5m2"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+3d_physics/layer_1="Touch"
+3d_physics/layer_2="Active Pipe"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

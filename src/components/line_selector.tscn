@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d1k85u5hr4ihg"]
+
+[ext_resource type="Script" uid="uid://b63fqfbcp85b8" path="res://src/components/line_selector.gd" id="1_cgjre"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j0bha"]
+radius = 0.1
+
+[node name="Line Selector" type="Area3D" unique_id=1814985894]
+monitoring = false
+script = ExtResource("1_cgjre")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=593864329]
+shape = SubResource("SphereShape3D_j0bha")

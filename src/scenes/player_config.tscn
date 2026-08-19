@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://uho80vyi7hww"]
+
+[ext_resource type="Script" uid="uid://chntxptht31lq" path="res://src/scenes/player_config.gd" id="1_5j71c"]
+[ext_resource type="Shader" uid="uid://cocbnbcu5fnqf" path="res://src/shaders/grid_texture.gdshader" id="2_bp8rt"]
+[ext_resource type="FontFile" uid="uid://dpap2fdn3k88j" path="res://assets/fonts/Chango-Regular.ttf" id="2_nepem"]
+[ext_resource type="PackedScene" uid="uid://2t75u7x8fwpt" path="res://src/components/custom_drawing_canvas.tscn" id="3_mhmwl"]
+
+[sub_resource type="Gradient" id="Gradient_quwqu"]
+offsets = PackedFloat32Array(0.28496504, 1)
+colors = PackedColorArray(0.25053176, 0.00037450538, 0.3605243, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qrd6c"]
+noise_type = 4
+frequency = 0.0878
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a2ryk"]
+noise = SubResource("FastNoiseLite_qrd6c")
+color_ramp = SubResource("Gradient_quwqu")
+seamless = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iebii"]
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.609
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rietc"]
+shader = ExtResource("2_bp8rt")
+shader_parameter/color = Color(0.18351224, 0.26853386, 0.47768712, 1)
+shader_parameter/lineWidth = 0.90000001341108
+shader_parameter/size = Vector2(16, 16)
+shader_parameter/noise = SubResource("NoiseTexture2D_a2ryk")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_iebii")
+shader_parameter/edge_fade = 1.0
+shader_parameter/wave_speed = 0.40000000596048
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ktbqv"]
+width = 720
+height = 1080
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhmwl"]
+font = ExtResource("2_nepem")
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0bha"]
+font = ExtResource("2_nepem")
+font_size = 30
+font_color = Color(0.851769, 0.851769, 0.8517688, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6akh"]
+font = ExtResource("2_nepem")
+font_size = 40
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0bha"]
+size = Vector2(150, 50)
+
+[node name="Player Config" type="Node2D" unique_id=2137911670]
+script = ExtResource("1_5j71c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1702287270]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1109368104]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(9.62615e-07, 0.41161877, 0.23438033, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=68385004]
+material = SubResource("ShaderMaterial_rietc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_ktbqv")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=2127233286]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=208672556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=2117761565]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=2083526477]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1516982644]
+layout_mode = 2
+text = "Player 01"
+label_settings = SubResource("LabelSettings_mhmwl")
+
+[node name="Configuration" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=492411841]
+layout_mode = 2
+text = " Configuration"
+label_settings = SubResource("LabelSettings_mhmwl")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=380661524]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=1001625807]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=297089677]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=603536343]
+layout_mode = 2
+columns = 2
+
+[node name="Name" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/GridContainer" unique_id=1658954748]
+layout_mode = 2
+text = "Name "
+label_settings = SubResource("LabelSettings_j0bha")
+
+[node name="Name Input" type="LineEdit" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/GridContainer" unique_id=156228314]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Player 01"
+max_length = 14
+
+[node name="Name2" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/GridContainer" unique_id=286876437]
+layout_mode = 2
+text = "Color "
+label_settings = SubResource("LabelSettings_j0bha")
+
+[node name="Color Input" type="ColorPickerButton" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/GridContainer" unique_id=53311004]
+layout_mode = 2
+color = Color(1, 1, 1, 1)
+edit_alpha = false
+edit_intensity = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/GridContainer" unique_id=1170667434]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/GridContainer" unique_id=683680097]
+layout_mode = 2
+
+[node name="Draw Title" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=499798246]
+layout_mode = 2
+text = "Draw Your Avatar!"
+label_settings = SubResource("LabelSettings_j0bha")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1701955301]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Back" type="Label" parent="CanvasLayer/Control/MarginContainer2" unique_id=732163751]
+layout_mode = 2
+text = "Back"
+label_settings = SubResource("LabelSettings_l6akh")
+
+[node name="Back Button" type="TouchScreenButton" parent="CanvasLayer/Control/MarginContainer2/Back" unique_id=97680674]
+position = Vector2(71, 30)
+shape = SubResource("RectangleShape2D_j0bha")
+
+[node name="Next" type="Label" parent="CanvasLayer/Control/MarginContainer2" unique_id=1829320065]
+layout_mode = 2
+text = "Next"
+label_settings = SubResource("LabelSettings_l6akh")
+horizontal_alignment = 2
+
+[node name="Next Button" type="TouchScreenButton" parent="CanvasLayer/Control/MarginContainer2/Next" unique_id=869931736]
+position = Vector2(615, 30)
+shape = SubResource("RectangleShape2D_j0bha")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=254095238]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1660981267]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(480, 558)
+render_target_update_mode = 4
+
+[node name="Avatar Canvas" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=1688863187 instance=ExtResource("3_mhmwl")]
+custom_minimum_size = Vector2(480, 544)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 480.0
+offset_bottom = 544.0
+grow_horizontal = 1
+grow_vertical = 1

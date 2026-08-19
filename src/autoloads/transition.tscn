@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://bwa0aqh1ne5m2"]
+
+[ext_resource type="Script" uid="uid://dhx6r2l2yhgov" path="res://src/autoloads/transition.gd" id="1_wvama"]
+[ext_resource type="PackedScene" uid="uid://cqwej56st22n7" path="res://src/launch_screen.tscn" id="2_2u0mq"]
+[ext_resource type="PackedScene" uid="uid://dn0emb1g8mp5x" path="res://src/display_elements/falling_dots_and_lines.tscn" id="2_qv581"]
+[ext_resource type="PackedScene" uid="uid://uho80vyi7hww" path="res://src/scenes/player_config.tscn" id="3_dfaq5"]
+[ext_resource type="PackedScene" uid="uid://cl2njijd5vj7i" path="res://src/scenes/game_board.tscn" id="4_u2whw"]
+[ext_resource type="FontFile" uid="uid://dpap2fdn3k88j" path="res://assets/fonts/Chango-Regular.ttf" id="5_dfaq5"]
+
+[sub_resource type="Animation" id="Animation_wvama"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qv581"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.6597539, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/Falling Dots and Lines")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_falling"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ycd81"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb3ph"]
+_data = {
+&"RESET": SubResource("Animation_wvama"),
+&"fade_in": SubResource("Animation_qv581"),
+&"fade_out": SubResource("Animation_ycd81")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0bha"]
+font = ExtResource("5_dfaq5")
+font_size = 24
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tnlxq"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Transition" type="Node2D" unique_id=1728350943]
+script = ExtResource("1_wvama")
+_packed_launch_screen = ExtResource("2_2u0mq")
+_packed_player_config = ExtResource("3_dfaq5")
+_packed_game_board = ExtResource("4_u2whw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=44685023]
+libraries/ = SubResource("AnimationLibrary_pb3ph")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=191494710]
+layer = 9999
+
+[node name="Black" type="ColorRect" parent="CanvasLayer" unique_id=1526971838]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/Black" unique_id=667152653]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 28.0
+offset_right = 130.0
+offset_bottom = 51.0
+text = "Loading..."
+label_settings = SubResource("LabelSettings_j0bha")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2076307678]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("ViewportTexture_tnlxq")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=55506380]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(360, 540)
+
+[node name="Falling Dots and Lines" parent="SubViewport" unique_id=930799523 instance=ExtResource("2_qv581")]
+
+[node name="Transition Timer" type="Timer" parent="." unique_id=128255942]
+wait_time = 0.5

@@ -1,0 +1,702 @@
+[gd_scene format=3 uid="uid://cl2njijd5vj7i"]
+
+[ext_resource type="Script" uid="uid://db307bh2buqnm" path="res://src/scenes/game_board.gd" id="1_tyvyc"]
+[ext_resource type="PackedScene" uid="uid://d1k85u5hr4ihg" path="res://src/components/line_selector.tscn" id="2_1ud0u"]
+[ext_resource type="Script" uid="uid://bqhu43ng0gnc4" path="res://src/components/box_manager.gd" id="2_2f17t"]
+[ext_resource type="PackedScene" uid="uid://dcddss1d1j064" path="res://src/display_elements/box.tscn" id="2_g30dp"]
+[ext_resource type="PackedScene" uid="uid://cp30o54ja1573" path="res://src/ui/hud.tscn" id="4_2f17t"]
+[ext_resource type="Shader" uid="uid://cp17dpthkherc" path="res://src/shaders/world_texture.gdshader" id="6_osppj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_osppj"]
+radius = 20.0
+height = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf2qh"]
+render_priority = 0
+shader = ExtResource("6_osppj")
+shader_parameter/primary_color = Color(0, 0.29209712, 0.09784875, 1)
+shader_parameter/secondary_color = Color(0.4174889, 0.64369667, 0.9999985, 1)
+shader_parameter/density = 0.1
+shader_parameter/effect_strength = 1.0
+shader_parameter/wipe_scale = 0.9499999787656
+shader_parameter/wipe_speed = 0.499999988824
+shader_parameter/wipe_blend = 0.7
+shader_parameter/signal_scale = 40.0
+shader_parameter/signal_speed = 1.0
+shader_parameter/signal_random_scale = 0.0
+shader_parameter/signal_blend = 0.999999977648
+shader_parameter/noise_distort_amount = 0.999999977648
+shader_parameter/noise_amount = 1.0
+shader_parameter/grain_amount = 0.4
+shader_parameter/displacement_amount = 1.0
+shader_parameter/flicker_amount = 0.0
+shader_parameter/flicker_speed = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i6wmh"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6akh"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_i6wmh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j0bha"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_l6akh")
+size = Vector2(20, 40)
+
+[sub_resource type="Environment" id="Environment_j0bha"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l6akh"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="MultiMesh" id="MultiMesh_j0bha"]
+transform_format = 1
+instance_count = 156
+mesh = SubResource("CylinderMesh_l6akh")
+buffer = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="Game Board" type="Node3D" unique_id=1221595095]
+script = ExtResource("1_tyvyc")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=829132038]
+own_world_3d = true
+size = Vector2i(720, 1080)
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport" unique_id=1815538145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -8, 5)
+layers = 2
+mesh = SubResource("SphereMesh_osppj")
+surface_material_override/0 = SubResource("ShaderMaterial_yf2qh")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=333377600]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5, 13, 5)
+cull_mask = 1047554
+
+[node name="Background" type="MeshInstance3D" parent="." unique_id=2002746620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -5, 5)
+mesh = SubResource("PlaneMesh_j0bha")
+
+[node name="HUD" parent="." unique_id=1223174135 instance=ExtResource("4_2f17t")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1572855356]
+environment = SubResource("Environment_j0bha")
+
+[node name="Boxes" type="Node3D" parent="." unique_id=1710258760]
+script = ExtResource("2_2f17t")
+
+[node name="Row 01" type="Node3D" parent="Boxes" unique_id=180062860]
+
+[node name="Box 01" parent="Boxes/Row 01" unique_id=1041837917 instance=ExtResource("2_g30dp")]
+
+[node name="Box 02" parent="Boxes/Row 01" unique_id=156888657 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 01" unique_id=1422914106 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 01" unique_id=2145004573 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 01" unique_id=1118844028 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 01" unique_id=1711741404 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 01" unique_id=735496171 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 01" unique_id=1834763815 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 01" unique_id=859494635 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 01" unique_id=1747535968 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_west = false
+
+[node name="Row 02" type="Node3D" parent="Boxes" unique_id=1754894110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Box 01" parent="Boxes/Row 02" unique_id=608198679 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 02" unique_id=1360991932 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 02" unique_id=357430288 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 02" unique_id=2079984784 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 02" unique_id=20755338 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 02" unique_id=822538423 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 02" unique_id=1298876053 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 02" unique_id=1114957642 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 02" unique_id=613093310 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 02" unique_id=1436621439 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 03" type="Node3D" parent="Boxes" unique_id=188593738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Box 01" parent="Boxes/Row 03" unique_id=2075452355 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 03" unique_id=105522892 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 03" unique_id=964976924 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 03" unique_id=69588235 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 03" unique_id=1979175234 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 03" unique_id=1761602506 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 03" unique_id=75010240 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 03" unique_id=1584791900 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 03" unique_id=1710418819 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 03" unique_id=1312185785 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 04" type="Node3D" parent="Boxes" unique_id=2074683188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Box 01" parent="Boxes/Row 04" unique_id=1926203304 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 04" unique_id=640629507 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 04" unique_id=684478204 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 04" unique_id=1790675074 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 04" unique_id=83723864 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 04" unique_id=1889961516 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 04" unique_id=2039784804 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 04" unique_id=1512529548 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 04" unique_id=119254791 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 04" unique_id=805796082 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 05" type="Node3D" parent="Boxes" unique_id=1983364098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Box 01" parent="Boxes/Row 05" unique_id=39861057 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 05" unique_id=93522862 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 05" unique_id=73342375 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 05" unique_id=682289853 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 05" unique_id=1997741456 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 05" unique_id=1125376747 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 05" unique_id=442839362 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 05" unique_id=1861587628 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 05" unique_id=801062988 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 05" unique_id=125950380 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 06" type="Node3D" parent="Boxes" unique_id=1773068713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Box 01" parent="Boxes/Row 06" unique_id=988510018 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 06" unique_id=1155420116 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 06" unique_id=2038598589 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 06" unique_id=895777419 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 06" unique_id=829873974 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 06" unique_id=1180957245 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 06" unique_id=1334327678 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 06" unique_id=684730831 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 06" unique_id=1607553865 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 06" unique_id=1414986964 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 07" type="Node3D" parent="Boxes" unique_id=967690256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Box 01" parent="Boxes/Row 07" unique_id=912412333 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 07" unique_id=1286135383 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 07" unique_id=904582362 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 07" unique_id=1669276754 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 07" unique_id=1882998539 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 07" unique_id=852315839 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 07" unique_id=2119882116 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 07" unique_id=2021394687 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 07" unique_id=1130181315 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 07" unique_id=531831212 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 08" type="Node3D" parent="Boxes" unique_id=2048196164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Box 01" parent="Boxes/Row 08" unique_id=1598269480 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 08" unique_id=1406611032 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 08" unique_id=2084601585 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 08" unique_id=753870048 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 08" unique_id=593184508 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 08" unique_id=1595864880 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 08" unique_id=197023529 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 08" unique_id=20518005 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 08" unique_id=387490844 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 08" unique_id=2018043826 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 09" type="Node3D" parent="Boxes" unique_id=1860592313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Box 01" parent="Boxes/Row 09" unique_id=938265236 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 09" unique_id=1481294389 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 09" unique_id=1397427835 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 09" unique_id=1490431293 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 09" unique_id=1917411711 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 09" unique_id=2065786091 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 09" unique_id=1941276284 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 09" unique_id=1221748394 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 09" unique_id=21598513 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 09" unique_id=2041543880 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 10" type="Node3D" parent="Boxes" unique_id=1361319273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="Box 01" parent="Boxes/Row 10" unique_id=1663813963 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 10" unique_id=1610245767 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 10" unique_id=1035379475 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 10" unique_id=1679378449 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 10" unique_id=1291281776 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 10" unique_id=1330188949 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 10" unique_id=1100229715 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 10" unique_id=699341506 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 10" unique_id=124654546 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 10" unique_id=1760296375 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 11" type="Node3D" parent="Boxes" unique_id=692559914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Box 01" parent="Boxes/Row 11" unique_id=1829628786 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 11" unique_id=1561447091 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 11" unique_id=1491158193 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 11" unique_id=871505800 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 11" unique_id=908288701 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 11" unique_id=1605163707 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 11" unique_id=228319662 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 11" unique_id=6355466 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 11" unique_id=1673686060 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 11" unique_id=798933428 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Row 12" type="Node3D" parent="Boxes" unique_id=1186456673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+
+[node name="Box 01" parent="Boxes/Row 12" unique_id=47570669 instance=ExtResource("2_g30dp")]
+_has_pipe_north = false
+
+[node name="Box 02" parent="Boxes/Row 12" unique_id=2118868981 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 03" parent="Boxes/Row 12" unique_id=1728515905 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 04" parent="Boxes/Row 12" unique_id=772945276 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 05" parent="Boxes/Row 12" unique_id=1694239365 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 06" parent="Boxes/Row 12" unique_id=1620915172 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 07" parent="Boxes/Row 12" unique_id=999609071 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 08" parent="Boxes/Row 12" unique_id=754593190 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 09" parent="Boxes/Row 12" unique_id=939004744 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Box 10" parent="Boxes/Row 12" unique_id=889024999 instance=ExtResource("2_g30dp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+_has_pipe_north = false
+_has_pipe_west = false
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1871979767]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5, 11, 6)
+
+[node name="Line Selector" parent="." unique_id=1814985894 instance=ExtResource("2_1ud0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1844681119]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 0, 0)
+light_energy = 1.676
+
+[node name="Dots" type="MultiMeshInstance3D" parent="." unique_id=103884644]
+multimesh = SubResource("MultiMesh_j0bha")

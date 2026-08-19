@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://djqlrjgpy2phg"]
+
+[ext_resource type="Script" uid="uid://d3mdnmymfv52p" path="res://src/ui/game_over.gd" id="1_dcb7f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0bha"]
+font_size = 80
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tnlxq"]
+line_spacing = -21.0
+font_size = 60
+font_color = Color(0.105882354, 1, 1, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6wmh"]
+size = Vector2(200, 130)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6akh"]
+font_size = 70
+font_color = Color(1, 0.31764707, 0.09803922, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Game Over" type="Control" unique_id=2045183239]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_dcb7f")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=855721365]
+self_modulate = Color(1, 1, 1, 0.59607846)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Draw" type="Label" parent="." unique_id=841835774]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DRAW!"
+label_settings = SubResource("LabelSettings_j0bha")
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="." unique_id=304875587]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -155.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAYER"
+label_settings = SubResource("LabelSettings_j0bha")
+horizontal_alignment = 1
+
+[node name="won with" type="Label" parent="." unique_id=1859652224]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "won with"
+label_settings = SubResource("LabelSettings_j0bha")
+horizontal_alignment = 1
+
+[node name="count" type="Label" parent="." unique_id=1998709236]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 17.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "count"
+label_settings = SubResource("LabelSettings_j0bha")
+horizontal_alignment = 1
+
+[node name="boxes" type="Label" parent="." unique_id=352770124]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 89.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "boxes!"
+label_settings = SubResource("LabelSettings_j0bha")
+horizontal_alignment = 1
+
+[node name="Try Again" type="Label" parent="." unique_id=1254156279]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 903.0
+offset_right = 224.0
+offset_bottom = 1048.0
+text = "TRY
+AGAIN"
+label_settings = SubResource("LabelSettings_tnlxq")
+horizontal_alignment = 1
+
+[node name="Try Again Button" type="TouchScreenButton" parent="Try Again" unique_id=823611876]
+position = Vector2(93, 75)
+shape = SubResource("RectangleShape2D_i6wmh")
+
+[node name="Quit" type="Label" parent="." unique_id=1055884509]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 923.0
+offset_right = 655.0
+offset_bottom = 1019.0
+text = "QUIT"
+label_settings = SubResource("LabelSettings_l6akh")
+horizontal_alignment = 1
+
+[node name="Quit Button" type="TouchScreenButton" parent="Quit" unique_id=1083681704]
+position = Vector2(93, 52)
+shape = SubResource("RectangleShape2D_i6wmh")
+
+[node name="Avatar Container" type="MarginContainer" parent="." unique_id=1937173497]
+custom_minimum_size = Vector2(360, 380)
+custom_maximum_size = Vector2(360, 380)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_right = 180.0
+offset_bottom = 380.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="Avatar Container" unique_id=1533122697]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Avatar Container" unique_id=229183788]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Avatar" type="TextureRect" parent="Avatar Container/MarginContainer" unique_id=1403375269]
+layout_mode = 2

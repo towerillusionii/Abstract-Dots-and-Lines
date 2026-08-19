@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dcddss1d1j064"]
+
+[ext_resource type="Script" uid="uid://jgtrkhgsmi18" path="res://src/display_elements/box.gd" id="1_qqr3o"]
+[ext_resource type="PackedScene" uid="uid://em8re1nni87r" path="res://src/display_elements/pipe.tscn" id="2_3dnho"]
+[ext_resource type="Material" uid="uid://wf7agdw87p61" path="res://src/materials/player_01_material.tres" id="2_mx10q"]
+[ext_resource type="Material" uid="uid://bxh3bpk7dihqx" path="res://src/materials/player_02_material.tres" id="3_0dcp2"]
+[ext_resource type="Script" uid="uid://bcc8qoj5xdv35" path="res://src/components/pipe_monitor.gd" id="4_0dcp2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_j0bha"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mvo01"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_501ad"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hqcjf"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j0bha"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_0dcp2"]
+radius = 0.1
+height = 0.2
+
+[node name="Box" type="Node3D" unique_id=1041837917]
+script = ExtResource("1_qqr3o")
+_player_1_material = ExtResource("2_mx10q")
+_player_2_material = ExtResource("3_0dcp2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=715459879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+visible = false
+mesh = SubResource("SphereMesh_j0bha")
+
+[node name="Pipe Monitors" type="Node3D" parent="." unique_id=39409307]
+
+[node name="North" type="Area3D" parent="Pipe Monitors" unique_id=1590786889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+script = ExtResource("4_0dcp2")
+metadata/_custom_type_script = "uid://bcc8qoj5xdv35"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe Monitors/North" unique_id=79750765]
+shape = SubResource("SphereShape3D_mvo01")
+
+[node name="South" type="Area3D" parent="Pipe Monitors" unique_id=991846858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1)
+script = ExtResource("4_0dcp2")
+metadata/_custom_type_script = "uid://bcc8qoj5xdv35"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe Monitors/South" unique_id=1327504028]
+shape = SubResource("SphereShape3D_501ad")
+
+[node name="East" type="Area3D" parent="Pipe Monitors" unique_id=1113035873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.5)
+script = ExtResource("4_0dcp2")
+metadata/_custom_type_script = "uid://bcc8qoj5xdv35"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe Monitors/East" unique_id=1002385432]
+shape = SubResource("SphereShape3D_hqcjf")
+
+[node name="West" type="Area3D" parent="Pipe Monitors" unique_id=771324556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+script = ExtResource("4_0dcp2")
+metadata/_custom_type_script = "uid://bcc8qoj5xdv35"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe Monitors/West" unique_id=1210307226]
+shape = SubResource("SphereShape3D_j0bha")
+
+[node name="Pipes" type="Node3D" parent="." unique_id=1281681945]
+
+[node name="Pipe North" parent="Pipes" unique_id=1573320569 instance=ExtResource("2_3dnho")]
+
+[node name="Pipe South" parent="Pipes" unique_id=1568311105 instance=ExtResource("2_3dnho")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1)
+
+[node name="Pipe East" parent="Pipes" unique_id=1415448660 instance=ExtResource("2_3dnho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+_orientation = 1
+
+[node name="Pipe West" parent="Pipes" unique_id=1814754585 instance=ExtResource("2_3dnho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+_orientation = 1
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1469308465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+emitting = false
+amount = 70
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.5
+mesh = SubResource("SphereMesh_0dcp2")
+direction = Vector3(0, 1, 0)
+spread = 64.32
+initial_velocity_min = 6.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.8
+scale_amount_max = 1.5

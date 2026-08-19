@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://2t75u7x8fwpt"]
+
+[ext_resource type="Script" uid="uid://x50ja3ihpat6" path="res://src/components/custom_drawing_canvas.gd" id="1_4y5ve"]
+[ext_resource type="Script" uid="uid://cofak4c408c2" path="res://src/components/drawing_surface.gd" id="2_mb35q"]
+[ext_resource type="Texture2D" uid="uid://3ye0e63acv5r" path="res://assets/images/ui/paint_brush.png" id="3_4i4xn"]
+[ext_resource type="FontFile" uid="uid://dpap2fdn3k88j" path="res://assets/fonts/Chango-Regular.ttf" id="3_ui84p"]
+[ext_resource type="Texture2D" uid="uid://y57axg538o1q" path="res://assets/images/ui/eraser.png" id="4_o4n4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6akh"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnlxq"]
+size = Vector2(64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6akh"]
+font = ExtResource("3_ui84p")
+font_size = 25
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34wdk"]
+size = Vector2(100, 64)
+
+[node name="Custom Drawing Tool" type="Control" unique_id=1688863187]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_4y5ve")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=664961720]
+custom_minimum_size = Vector2(480, 0)
+propagate_maximum_size = false
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 428.0
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1136327720]
+custom_minimum_size = Vector2(480, 480)
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Control" unique_id=1921518719]
+show_behind_parent = true
+z_index = -10
+custom_minimum_size = Vector2(480, 480)
+custom_maximum_size = Vector2(480, 480)
+layout_mode = 1
+offset_right = 480.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Control" unique_id=760056384]
+show_behind_parent = true
+z_index = -9
+custom_minimum_size = Vector2(480, 480)
+custom_maximum_size = Vector2(480, 480)
+layout_mode = 1
+offset_right = 480.0
+offset_bottom = 480.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Control/MarginContainer" unique_id=1328521938]
+show_behind_parent = true
+layout_mode = 2
+
+[node name="Drawing Surface" type="TextureRect" parent="VBoxContainer/Control" unique_id=412375868]
+custom_minimum_size = Vector2(460, 460)
+custom_maximum_size = Vector2(460, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -230.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("2_mb35q")
+metadata/_custom_type_script = "uid://cofak4c408c2"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1202718562]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Paint" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1597994940]
+layout_mode = 2
+texture = ExtResource("3_4i4xn")
+
+[node name="Paint Button" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/Paint" unique_id=1867562732]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_l6akh")
+
+[node name="Erase" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=933904114]
+layout_mode = 2
+texture = ExtResource("4_o4n4p")
+
+[node name="Erase Button" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/Erase" unique_id=47003011]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_tnlxq")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer" unique_id=1326152966]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+edit_alpha = false
+edit_intensity = false
+
+[node name="Clear" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1930149010]
+layout_mode = 2
+text = "Clear"
+label_settings = SubResource("LabelSettings_l6akh")
+
+[node name="Clear Button" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/Clear" unique_id=1828912942]
+position = Vector2(44, 16)
+shape = SubResource("RectangleShape2D_34wdk")
