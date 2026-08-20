@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dyokkq7rc2wti"]
+
+[ext_resource type="Script" uid="uid://d1whms7pjjt21" path="res://src/autoloads/audio.gd" id="1_i345c"]
+[ext_resource type="AudioStream" uid="uid://1qsvjmepk3sm" path="res://assets/audio/music/abdal.ogg" id="2_nx2f6"]
+[ext_resource type="AudioStream" uid="uid://brb4akx5st8lr" path="res://assets/audio/fx/select.ogg" id="3_lycod"]
+[ext_resource type="AudioStream" uid="uid://ydi46k051ng0" path="res://assets/audio/fx/deselect.ogg" id="4_5n3ap"]
+
+[node name="Audio" type="Node" unique_id=329055468]
+script = ExtResource("1_i345c")
+
+[node name="Songs" type="Node" parent="." unique_id=1174818134]
+
+[node name="NONE" type="AudioStreamPlayer" parent="Songs" unique_id=131374493]
+
+[node name="SONG_01" type="AudioStreamPlayer" parent="Songs" unique_id=1140527598]
+stream = ExtResource("2_nx2f6")
+volume_db = -5.0
+
+[node name="Effects" type="Node" parent="." unique_id=879682818]
+
+[node name="NONE" type="AudioStreamPlayer" parent="Effects" unique_id=1387470600]
+
+[node name="SELECT" type="AudioStreamPlayer" parent="Effects" unique_id=615714339]
+stream = ExtResource("3_lycod")
+
+[node name="DESELECT" type="AudioStreamPlayer" parent="Effects" unique_id=1642135872]
+stream = ExtResource("4_5n3ap")

@@ -13,7 +13,9 @@ var _allow_save_values:bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.transition_completed.emit()
+	_back_button.pressed.connect(_play_select_sound)
 	_back_button.released.connect(_back_action)
+	_next_button.pressed.connect(_play_select_sound)
 	_next_button.released.connect(_next_action)
 	_color_input.color_changed.connect(_change_color)
 	_name_input.text_changed.connect(_change_name)
@@ -26,6 +28,9 @@ func _ready() -> void:
 	
 	_set_player_values()
 
+func _play_select_sound() -> void:
+	Audio.play_effect(Audio.Effect.SELECT)
+
 func _set_player_values() -> void:
 	_avatar_canvas.set_avatar( GameState.get_player_avatar(_current_player) )
 		
@@ -36,6 +41,7 @@ func _set_player_values() -> void:
 	_allow_save_values = true
 	
 func _back_action() -> void:
+	Audio.play_effect(Audio.Effect.DESELECT)
 	_avatar_canvas.save_avatar(_current_player)
 	
 	if _current_player == GameState.Player.PLAYER_01:
@@ -45,6 +51,7 @@ func _back_action() -> void:
 		_set_player_values()
 
 func _next_action() -> void:
+	Audio.play_effect(Audio.Effect.DESELECT)
 	_avatar_canvas.save_avatar(_current_player)
 	
 	if _current_player == GameState.Player.PLAYER_01:

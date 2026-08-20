@@ -23,6 +23,7 @@ boot_splash/minimum_display_time=1000
 EventBus="*uid://bjgs64r5owi3e"
 GameState="*uid://btcmivlasm2x5"
 Transition="*uid://bwa0aqh1ne5m2"
+Audio="*uid://dyokkq7rc2wti"
 
 [display]
 

@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://wf7agdw87p61" path="res://src/materials/player_01_material.tres" id="2_2gnd1"]
 [ext_resource type="Script" uid="uid://b6bym6l37stre" path="res://src/components/pipe_area_3d.gd" id="2_oefev"]
 [ext_resource type="Material" uid="uid://bxh3bpk7dihqx" path="res://src/materials/player_02_material.tres" id="3_x2pns"]
+[ext_resource type="AudioStream" uid="uid://o3pjruyduilr" path="res://assets/audio/fx/add_line.ogg" id="5_x2pns"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j0bha"]
 radius = 0.1
@@ -68,3 +69,6 @@ angular_velocity_min = -90.0
 angular_velocity_max = 90.0
 scale_amount_min = 0.5
 scale_amount_max = 1.2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=197088171]
+stream = ExtResource("5_x2pns")

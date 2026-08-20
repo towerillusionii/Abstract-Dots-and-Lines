@@ -31,16 +31,20 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _try_again_pressed() -> void:
+	Audio.play_effect(Audio.Effect.SELECT)
 	_try_again_label.modulate = Color(0.626, 0.626, 0.626, 1.0)
 
 func _try_again_released() -> void:
+	Audio.play_effect(Audio.Effect.DESELECT)
 	_try_again_label.modulate = Color(1.0,1.0,1.0,1.0)
 	get_tree().reload_current_scene()
 
 func _quit_button_pressed() -> void:
+	Audio.play_effect(Audio.Effect.SELECT)
 	_quit_label.modulate = Color(0.626, 0.626, 0.626, 1.0)
 
 func _quit_button_released() -> void:
+	Audio.play_effect(Audio.Effect.DESELECT)
 	_quit_label.modulate = Color(1.0,1.0,1.0,1.0)
 	Transition.go_to(Globals.Scene.LAUNCH_SCREEN)
 

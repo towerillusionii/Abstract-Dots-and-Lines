@@ -14,10 +14,12 @@ size = Vector2(64, 64)
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6akh"]
 font = ExtResource("3_ui84p")
-font_size = 25
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34wdk"]
-size = Vector2(100, 64)
+size = Vector2(110, 64)
 
 [node name="Custom Drawing Tool" type="Control" unique_id=1688863187]
 layout_mode = 3
@@ -122,5 +124,5 @@ text = "Clear"
 label_settings = SubResource("LabelSettings_l6akh")
 
 [node name="Clear Button" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/Clear" unique_id=1828912942]
-position = Vector2(44, 16)
+position = Vector2(52, 19)
 shape = SubResource("RectangleShape2D_34wdk")

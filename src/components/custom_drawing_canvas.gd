@@ -18,8 +18,12 @@ var _erasing:bool = false
 
 func _ready() -> void:
 	_color_input.color_changed.connect(_change_color)
+	
+	_paint_button.pressed.connect(_play_select_sound)
 	_paint_button.released.connect(_paint_mode)
+	_erase_button.pressed.connect(_play_select_sound)
 	_erase_button.released.connect(_erase_mode)
+	_clear_button.released.connect(_play_select_sound)
 	_clear_button.released.connect(_clear)
 	
 	var color_picker:ColorPicker = _color_input.get_picker()
@@ -32,23 +36,29 @@ func _ready() -> void:
 	
 	_paint_mode()
 
+func _play_select_sound() -> void:
+	Audio.play_effect(Audio.Effect.SELECT)
+
 func _change_color(color:Color) -> void:
 	_paint_color = color
 	_drawing_surface.set_color(_paint_color)
 
 func _paint_mode() -> void:
+	Audio.play_effect(Audio.Effect.SELECT)
 	_erasing = false
 	_erase_icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	_paint_icon.modulate = Color(0.681, 0.414, 1.0, 1.0)
 	_drawing_surface.set_paint_mode(_paint_color)
 
 func _erase_mode() -> void:
+	Audio.play_effect(Audio.Effect.SELECT)
 	_erasing = true
 	_paint_icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	_erase_icon.modulate = Color(0.681, 0.414, 1.0, 1.0)
 	_drawing_surface.set_erase_mode()
 
 func _clear() -> void:
+	Audio.play_effect(Audio.Effect.SELECT)
 	_drawing_surface.clear_all()
 
 func save_avatar(player:GameState.Player) -> void:

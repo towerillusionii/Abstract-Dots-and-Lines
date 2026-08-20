@@ -14,6 +14,7 @@ enum Orientation {
 @onready var _pipe_area:Area3D     = $"Pipe Area"
 @onready var _mesh:MeshInstance3D  = $MeshInstance3D
 @onready var _cpu_particles_3d:CPUParticles3D = $CPUParticles3D
+@onready var _audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
 
 var _enabled:bool = true
 var _can_be_selected:bool = true
@@ -69,6 +70,7 @@ func _select(_area:Area3D) -> void:
 		return
 		
 	if not _activated and _can_be_selected:
+		_audio_stream_player.play()
 		_activated = true
 		_pipe_area.set_collision_layer_value(2, true)
 		_activated_by = GameState.get_active_player()
