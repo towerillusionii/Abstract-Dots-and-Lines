@@ -1,0 +1,1 @@
+Abstract Dots and Lines is a libre implementation of a pen-and-paper game.

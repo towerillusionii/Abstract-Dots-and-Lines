@@ -21,6 +21,11 @@ data = PackedVector3Array(0, 0.5, 0, 0, 0.5, 0, 0, 0.4985, -0.0174, 0, 0.5, 0, -
 radius = 0.05
 height = 0.1
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_72nkp"]
+random_pitch = 1.2656103
+streams_count = 1
+stream_0/stream = ExtResource("5_x2pns")
+
 [node name="Pipe" type="Node3D" unique_id=1573320569]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_fwrcl")
@@ -71,4 +76,5 @@ scale_amount_min = 0.5
 scale_amount_max = 1.2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=197088171]
-stream = ExtResource("5_x2pns")
+stream = SubResource("AudioStreamRandomizer_72nkp")
+volume_db = -10.0

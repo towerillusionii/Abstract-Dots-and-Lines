@@ -5,6 +5,8 @@
 [ext_resource type="Material" uid="uid://wf7agdw87p61" path="res://src/materials/player_01_material.tres" id="2_mx10q"]
 [ext_resource type="Material" uid="uid://bxh3bpk7dihqx" path="res://src/materials/player_02_material.tres" id="3_0dcp2"]
 [ext_resource type="Script" uid="uid://bcc8qoj5xdv35" path="res://src/components/pipe_monitor.gd" id="4_0dcp2"]
+[ext_resource type="AudioStream" uid="uid://drl4ecat4ltdi" path="res://assets/audio/fx/bubble_pop_01.ogg" id="6_hqcjf"]
+[ext_resource type="AudioStream" uid="uid://dbptglljefv6l" path="res://assets/audio/fx/box_claimed.ogg" id="7_501ad"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_j0bha"]
 radius = 0.25
@@ -25,6 +27,16 @@ radius = 0.1
 [sub_resource type="SphereMesh" id="SphereMesh_0dcp2"]
 radius = 0.1
 height = 0.2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fct6k"]
+random_pitch = 1.1205834
+streams_count = 1
+stream_0/stream = ExtResource("6_hqcjf")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j0bha"]
+random_pitch = 1.7948127
+streams_count = 1
+stream_0/stream = ExtResource("7_501ad")
 
 [node name="Box" type="Node3D" unique_id=1041837917]
 script = ExtResource("1_qqr3o")
@@ -101,3 +113,11 @@ initial_velocity_min = 6.0
 initial_velocity_max = 10.0
 scale_amount_min = 0.8
 scale_amount_max = 1.5
+
+[node name="Pop" type="AudioStreamPlayer" parent="." unique_id=401051426]
+stream = SubResource("AudioStreamRandomizer_fct6k")
+pitch_scale = 1.3
+
+[node name="Explode" type="AudioStreamPlayer" parent="." unique_id=139218249]
+stream = SubResource("AudioStreamRandomizer_j0bha")
+volume_db = -15.0

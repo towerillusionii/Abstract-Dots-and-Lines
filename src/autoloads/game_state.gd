@@ -114,4 +114,3 @@ func start_new_game() -> void:
 	_active_player = Player.PLAYER_01
 	_player_1_score = 0
 	_player_2_score = 0
-	

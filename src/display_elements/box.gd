@@ -18,6 +18,8 @@ class_name Box extends Node3D
 
 @onready var _mesh:MeshInstance3D = $MeshInstance3D
 @onready var _cpu_particles_3d:CPUParticles3D = $CPUParticles3D
+@onready var _pop:AudioStreamPlayer     = $Pop
+@onready var _explode:AudioStreamPlayer = $Explode
 
 var _claimed:bool = false
 var _claimed_by:GameState.Player
@@ -64,9 +66,11 @@ func _claim_and_explode() -> void:
 			_mesh.material_override = _player_2_material
 			_cpu_particles_3d.mesh.material = _player_2_material
 	
-	await get_tree().create_timer(.3 * get_index() + randf_range(-.1,.1)).timeout
+	await get_tree().create_timer(.3 * get_index() + randf_range(-.3,.3)).timeout
 	_mesh.hide()
 	_cpu_particles_3d.emitting = true
+	_pop.play()
+	_explode.play()
 	
 
 func check_for_new_completion() -> bool:
@@ -85,5 +89,7 @@ func check_for_new_completion() -> bool:
 		pipe_monitor.set_claimed_by(_claimed_by)
 		
 	_set_mesh_material()
+	
+	_pop.play()
 	
 	return true

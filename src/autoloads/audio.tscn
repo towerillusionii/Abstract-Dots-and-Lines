@@ -14,7 +14,7 @@ script = ExtResource("1_i345c")
 
 [node name="SONG_01" type="AudioStreamPlayer" parent="Songs" unique_id=1140527598]
 stream = ExtResource("2_nx2f6")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Effects" type="Node" parent="." unique_id=879682818]
 
@@ -22,6 +22,8 @@ volume_db = -5.0
 
 [node name="SELECT" type="AudioStreamPlayer" parent="Effects" unique_id=615714339]
 stream = ExtResource("3_lycod")
+volume_db = -5.0
 
 [node name="DESELECT" type="AudioStreamPlayer" parent="Effects" unique_id=1642135872]
 stream = ExtResource("4_5n3ap")
+volume_db = -5.0
