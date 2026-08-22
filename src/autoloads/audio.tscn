@@ -1,19 +1,25 @@
 [gd_scene format=3 uid="uid://dyokkq7rc2wti"]
 
 [ext_resource type="Script" uid="uid://d1whms7pjjt21" path="res://src/autoloads/audio.gd" id="1_i345c"]
-[ext_resource type="AudioStream" uid="uid://1qsvjmepk3sm" path="res://assets/audio/music/abdal.ogg" id="2_nx2f6"]
+[ext_resource type="AudioStream" uid="uid://1qsvjmepk3sm" path="res://assets/audio/music/abdal_song_01.ogg" id="2_nx2f6"]
+[ext_resource type="AudioStream" uid="uid://bmfxtikganotd" path="res://assets/audio/music/abdal_song_02.ogg" id="3_chiyn"]
 [ext_resource type="AudioStream" uid="uid://brb4akx5st8lr" path="res://assets/audio/fx/select.ogg" id="3_lycod"]
 [ext_resource type="AudioStream" uid="uid://ydi46k051ng0" path="res://assets/audio/fx/deselect.ogg" id="4_5n3ap"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_exou1"]
+stream_count = 2
+stream_0 = ExtResource("2_nx2f6")
+stream_1 = ExtResource("3_chiyn")
 
 [node name="Audio" type="Node" unique_id=329055468]
 script = ExtResource("1_i345c")
 
 [node name="Songs" type="Node" parent="." unique_id=1174818134]
 
-[node name="NONE" type="AudioStreamPlayer" parent="Songs" unique_id=131374493]
+[node name="NONE" type="AudioStreamPlayer" parent="Songs" unique_id=378838032]
 
-[node name="SONG_01" type="AudioStreamPlayer" parent="Songs" unique_id=1140527598]
-stream = ExtResource("2_nx2f6")
+[node name="PLAYLIST" type="AudioStreamPlayer" parent="Songs" unique_id=131374493]
+stream = SubResource("AudioStreamPlaylist_exou1")
 volume_db = -10.0
 
 [node name="Effects" type="Node" parent="." unique_id=879682818]

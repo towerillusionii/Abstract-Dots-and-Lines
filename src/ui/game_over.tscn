@@ -1,24 +1,28 @@
 [gd_scene format=3 uid="uid://djqlrjgpy2phg"]
 
 [ext_resource type="Script" uid="uid://d3mdnmymfv52p" path="res://src/ui/game_over.gd" id="1_dcb7f"]
+[ext_resource type="FontFile" uid="uid://dpap2fdn3k88j" path="res://assets/fonts/Chango-Regular.ttf" id="2_ioouv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0bha"]
-font_size = 80
+font = ExtResource("2_ioouv")
+font_size = 70
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnlxq"]
 line_spacing = -21.0
-font_size = 60
+font = ExtResource("2_ioouv")
+font_size = 53
 font_color = Color(0.105882354, 1, 1, 1)
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6wmh"]
-size = Vector2(200, 130)
+size = Vector2(260, 130)
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6akh"]
-font_size = 70
+font = ExtResource("2_ioouv")
+font_size = 53
 font_color = Color(1, 0.31764707, 0.09803922, 1)
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
@@ -43,14 +47,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Draw" type="Label" parent="." unique_id=841835774]
-visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -55.0
-offset_bottom = 55.0
+offset_top = 9.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "DRAW!"
@@ -64,8 +67,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -155.0
-offset_bottom = -45.0
+offset_top = -91.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "PLAYER"
@@ -79,8 +82,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -55.0
-offset_bottom = 55.0
+offset_top = 9.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "won with"
@@ -94,8 +97,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 17.0
-offset_bottom = 127.0
+offset_top = 81.0
+offset_bottom = 191.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "count"
@@ -109,8 +112,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 89.0
-offset_bottom = 199.0
+offset_top = 153.0
+offset_bottom = 263.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "boxes!"
@@ -123,13 +126,15 @@ offset_left = 36.0
 offset_top = 903.0
 offset_right = 224.0
 offset_bottom = 1048.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
 text = "TRY
 AGAIN"
 label_settings = SubResource("LabelSettings_tnlxq")
 horizontal_alignment = 1
 
 [node name="Try Again Button" type="TouchScreenButton" parent="Try Again" unique_id=823611876]
-position = Vector2(93, 75)
+position = Vector2(119, 75)
 shape = SubResource("RectangleShape2D_i6wmh")
 
 [node name="Quit" type="Label" parent="." unique_id=1055884509]
@@ -138,6 +143,8 @@ offset_left = 487.0
 offset_top = 923.0
 offset_right = 655.0
 offset_bottom = 1019.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
 text = "QUIT"
 label_settings = SubResource("LabelSettings_l6akh")
 horizontal_alignment = 1

@@ -98,6 +98,7 @@ alignment = 1
 
 [node name="Paint" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1597994940]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture = ExtResource("3_4i4xn")
 
 [node name="Paint Button" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/Paint" unique_id=1867562732]
@@ -106,6 +107,7 @@ shape = SubResource("RectangleShape2D_l6akh")
 
 [node name="Erase" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=933904114]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture = ExtResource("4_o4n4p")
 
 [node name="Erase Button" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/Erase" unique_id=47003011]
@@ -115,11 +117,14 @@ shape = SubResource("RectangleShape2D_tnlxq")
 [node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer" unique_id=1326152966]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 edit_alpha = false
 edit_intensity = false
 
 [node name="Clear" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1930149010]
 layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
 text = "Clear"
 label_settings = SubResource("LabelSettings_l6akh")
 

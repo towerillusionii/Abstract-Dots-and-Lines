@@ -203,6 +203,15 @@ shadow_color = Color(0, 0, 0, 0.5529412)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0bha"]
 size = Vector2(350, 100)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6akh"]
+size = Vector2(64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0bha"]
+font_size = 28
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnlxq"]
+size = Vector2(32, 38)
+
 [node name="Launch Screen" type="Node2D" unique_id=399764347]
 script = ExtResource("1_m5obk")
 
@@ -295,6 +304,8 @@ offset_bottom = 49.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(360, 50)
+mouse_filter = 1
+mouse_default_cursor_shape = 2
 text = "PLAY"
 label_settings = SubResource("LabelSettings_4uydn")
 horizontal_alignment = 1
@@ -327,6 +338,7 @@ custom_minimum_size = Vector2(64, 64)
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -338,11 +350,16 @@ size_flags_horizontal = 4
 texture = ExtResource("4_e1eah")
 expand_mode = 3
 
+[node name="Godot Button" type="TouchScreenButton" parent="CanvasLayer/Icons/HBoxContainer/Godot" unique_id=1788975216]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_l6akh")
+
 [node name="Tower Illusion" type="MarginContainer" parent="CanvasLayer/Icons/HBoxContainer" unique_id=400714689]
 custom_minimum_size = Vector2(64, 64)
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -354,11 +371,16 @@ size_flags_horizontal = 4
 texture = ExtResource("5_ttldv")
 expand_mode = 3
 
+[node name="TI2 Button" type="TouchScreenButton" parent="CanvasLayer/Icons/HBoxContainer/Tower Illusion" unique_id=335215180]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_l6akh")
+
 [node name="OFL" type="MarginContainer" parent="CanvasLayer/Icons/HBoxContainer" unique_id=1473349126]
 custom_minimum_size = Vector2(64, 64)
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -369,3 +391,53 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("6_v0yr6")
 expand_mode = 3
+
+[node name="OFL Button" type="TouchScreenButton" parent="CanvasLayer/Icons/HBoxContainer/OFL" unique_id=2051994004]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_l6akh")
+
+[node name="Credits Container" type="MarginContainer" parent="CanvasLayer" unique_id=410793575]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 400
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 96
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Credits Container" unique_id=254715708]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.7607843)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Credits Container" unique_id=20716865]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Credits Container/MarginContainer" unique_id=951486739]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Credits Container/MarginContainer/ScrollContainer" unique_id=46341163]
+custom_minimum_size = Vector2(670, 200)
+layout_mode = 2
+size_flags_vertical = 1
+autowrap_mode = 2
+
+[node name="Close Label" type="Label" parent="CanvasLayer/Credits Container" unique_id=797395498]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+text = " X "
+label_settings = SubResource("LabelSettings_j0bha")
+vertical_alignment = 1
+
+[node name="Close Button" type="TouchScreenButton" parent="CanvasLayer/Credits Container/Close Label" unique_id=49651364]
+position = Vector2(16, 19)
+shape = SubResource("RectangleShape2D_tnlxq")

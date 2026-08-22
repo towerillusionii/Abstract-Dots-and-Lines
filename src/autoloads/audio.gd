@@ -2,7 +2,7 @@ extends Node
 
 enum Song {
 	NONE,
-	SONG_01
+	PLAYLIST
 }
 
 enum Effect {

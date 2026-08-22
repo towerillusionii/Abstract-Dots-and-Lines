@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://droag7713j4qn"]
 
 [ext_resource type="Script" uid="uid://cdvduibmcej1e" path="res://src/ui/next_turn_card.gd" id="1_sln2h"]
+[ext_resource type="FontFile" uid="uid://dpap2fdn3k88j" path="res://assets/fonts/Chango-Regular.ttf" id="2_nx1uq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0bha"]
-font_size = 85
+font = ExtResource("2_nx1uq")
+font_size = 67
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -30,11 +32,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="Name" type="Label" parent="ColorRect" unique_id=728635358]
 layout_mode = 0
-offset_left = 14.103928
-offset_top = 409.588
-offset_right = 705.71454
-offset_bottom = 546.588
-rotation = -0.14624788
+offset_left = 5.1039276
+offset_top = 444.58804
+offset_right = 696.71454
+offset_bottom = 581.588
+rotation = -0.13962634
 text = "fdaslkfjdlksa's"
 label_settings = SubResource("LabelSettings_j0bha")
 horizontal_alignment = 1
@@ -43,8 +45,8 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 243.99997
 offset_top = 492.99997
-offset_right = 476.0
+offset_right = 484.99997
 offset_bottom = 630.0
-rotation = 0.0889062
+rotation = -0.13962634
 text = "TURN"
 label_settings = SubResource("LabelSettings_j0bha")

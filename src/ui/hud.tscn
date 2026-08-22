@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bhfmoiumtvdgj" path="res://src/ui/player_02_stats.tscn" id="2_snmo6"]
 [ext_resource type="PackedScene" uid="uid://droag7713j4qn" path="res://src/ui/next_turn_card.tscn" id="3_snmo6"]
 [ext_resource type="PackedScene" uid="uid://djqlrjgpy2phg" path="res://src/ui/game_over.tscn" id="4_i4jpw"]
+[ext_resource type="PackedScene" uid="uid://dpry4rxgb84q4" path="res://src/ui/quit_card.tscn" id="6_0isw4"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1223174135]
 
@@ -17,3 +18,5 @@
 [node name="Player 02" parent="." unique_id=164143631 instance=ExtResource("2_snmo6")]
 
 [node name="Game Over" parent="." unique_id=2045183239 instance=ExtResource("4_i4jpw")]
+
+[node name="Quit" parent="." unique_id=19272256 instance=ExtResource("6_0isw4")]

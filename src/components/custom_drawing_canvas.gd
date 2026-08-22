@@ -9,10 +9,7 @@ class_name CustomDrawingTool extends Control
 
 @onready var _paint_icon:TextureRect = $VBoxContainer/HBoxContainer/Paint
 @onready var _erase_icon:TextureRect = $VBoxContainer/HBoxContainer/Erase
-@onready var _clear_label:Label      = $VBoxContainer/HBoxContainer/Clear
 
-
-var _drawable_texture:Texture2D
 var _paint_color:Color = Color(0.0, 0.0, 0.317, 1.0)
 var _erasing:bool = false
 
