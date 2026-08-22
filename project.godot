@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Abstract Dots and Lines"
-config/version="v1.0.0"
+config/version="1.0.0"
 run/main_scene="uid://cqwej56st22n7"
 config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/use_filter=false
