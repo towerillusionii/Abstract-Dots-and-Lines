@@ -1,0 +1,92 @@
+name: "Build and Deploy"
+
+on:
+  push:
+    branches:
+      - main 
+
+env:
+  EXPORT_NAME: "Abstract-Dots-and-Lines"
+  ITCH_USERNAME: "towerillusionii"
+  ITCH_GAME_ID: "5014747"
+
+jobs:
+  export:
+    name: Export Game
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.7 
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Export Folders
+        run: |
+          mkdir -v -p build/web
+          mkdir -v -p build/windows
+          mkdir -v -p build/macos
+          mkdir -v -p build/linux
+
+      - name: Export Web
+        run: godot --headless --export-release "Web" build/web/index.html
+
+      - name: Export Windows
+        run: godot --headless --export-release "Windows" build/windows/$EXPORT_NAME.exe
+
+      - name: Export Linux 
+        run: godot --headless --export-release "Linux" build/linux/$EXPORT_NAME.x86_64
+
+      - name: Export macOS 
+        run: godot --headless --export-release "macOS" build/macos/$EXPORT_NAME.app
+
+      - name: Package Builds
+        run: |
+          cd build/web && zip -r ../../web.zip . && cd ../..
+          cd build/windows && zip -r ../../windows.zip . && cd ../..
+          cd build/linux && zip -r ../../linux.zip . && cd ../..
+          cd build/macos && zip -r ../../macos.zip . && cd ../..
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-builds
+          path: |
+            web.zip
+            windows.zip
+            linux.zip
+            macos.zip
+
+  deploy:
+    name: Deploy to Itch.io
+    needs: export
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: game-builds
+
+      - name: Deploy Web
+        uses: JosephBihindo/setup-butler@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          butler_command: push web.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:web
+
+      - name: Deploy Windows
+        uses: JosephBihindo/setup-butler@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          butler_command: push windows.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:windows
+
+      - name: Deploy Linux
+        uses: JosephBihindo/setup-butler@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          butler_command: push linux.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:linux
+
+      - name: Deploy macOS
+        uses: JosephBihindo/setup-butler@v1
+        with:
+          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
+          butler_command: push macos.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:macos
+
