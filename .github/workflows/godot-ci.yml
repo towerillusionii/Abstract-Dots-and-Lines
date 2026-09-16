@@ -59,6 +59,7 @@ jobs:
             linux.zip
 
   deploy:
+    environment: Production
     name: Deploy to Itch.io
     needs: export
     runs-on: ubuntu-latest
