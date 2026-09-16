@@ -9,7 +9,7 @@ env:
   GODOT_VERSION: 4.7
   EXPORT_NAME: "Abstract-Dots-and-Lines"
   ITCH_USERNAME: "towerillusionii"
-  ITCH_GAME_ID: "5014747"
+  ITCH_GAME_ID: "abstract-dots-and-lines" 
 
 jobs:
   export:
