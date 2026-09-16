@@ -68,21 +68,17 @@ jobs:
         with:
           name: game-builds
 
-      - name: Deploy Web
+      - name: Setup Butler 
         uses: jdno/setup-butler@v2.0.0
         with:
           butler_api_key: ${{ secrets.BUTLER_API_KEY }}
-          butler_command: push web.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:web
+
+      - name: Deploy Web
+        run: butler push web.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:web
 
       - name: Deploy Windows
-        uses: jdno/setup-butler@v2.0.0
-        with:
-          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
-          butler_command: push windows.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:windows
+        run: push windows.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:windows
 
       - name: Deploy Linux
-        uses: jdno/setup-butler@v2.0.0
-        with:
-          butler_api_key: ${{ secrets.BUTLER_API_KEY }}
-          butler_command: push linux.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:linux
+        run: push linux.zip ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME_ID }}:linux
 
