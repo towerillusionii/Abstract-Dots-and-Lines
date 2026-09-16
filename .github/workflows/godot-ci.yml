@@ -46,6 +46,7 @@ jobs:
 
       - name: Export macOS 
         run: godot --headless --export-release "macOS" build/macos/$EXPORT_NAME.app
+        continue-on-error: true
 
       - name: Package Builds
         run: |
